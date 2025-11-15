@@ -1,0 +1,57 @@
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "."
+
+[dev]
+  command = "npm run dev"
+  port = 8000
+
+# API redirects - using serverless functions with local backend fallback
+[[redirects]]
+  from = "/api/query"
+  to = "/.netlify/functions/query"
+  status = 200
+  force = true
+
+# Single Page Application fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables for local backend
+[context.production.environment]
+  BACKEND_URL = "http://10.57.205.169:8001"
+
+# Single Page Application fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache settings
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "max-age=3600"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
+# Environment variables (set these in Netlify dashboard)
+[context.production.environment]
+  GROQ_API_KEY = "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"
+  GOOGLE_API_KEY = "AIzaSyCngmeFhFqkwtM2AIhVGkePFtQCZdMPMMg"

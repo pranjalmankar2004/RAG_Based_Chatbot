@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Legal RAG">
+    <title>Legal RAG Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">⚖️</div>
+                    <div class="header-text">
+                        <h1 class="title">Legal RAG Assistant</h1>
+                        <p class="subtitle">Loaded documents: Contract Act | Consumer Protection | RTI Act | Evidence Act</p>
+                    </div>
+                </div>
+                <button class="settings-btn" id="settingsBtn" title="View Documents">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+                    </svg>
+                </button>
+        </header>
+
+        <!-- Chat Area -->
+        <main class="chat-container">
+            <div class="messages-wrapper">
+                <div class="messages" id="messagesContainer">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                <div class="scroll-indicator" id="scrollIndicator"></div>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-section">
+            <div class="input-wrapper">
+                <textarea 
+                    class="message-input" 
+                    id="messageInput" 
+                    placeholder="Ask about your legal documents... (Enter to send)"
+                    rows="1"
+                ></textarea>
+                <button class="send-btn" id="sendBtn" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-hint">📑 PDFs loaded: Contract Act | Consumer Protection | RTI Act | Evidence Act | Share findings easily</div>
+        </footer>
+    </div>
+
+    <!-- Typing Indicator Template (hidden) -->
+    <template id="typingIndicatorTemplate">
+        <div class="message bot-message">
+            <div class="message-avatar">⚖️</div>
+            <div class="message-content">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Documents Modal -->
+    <div class="modal" id="documentsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📄 Loaded Documents</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="document-item">
+                    <strong>1. Consumer Protection Act 2019</strong>
+                    <p>Consumer rights, grievance redressal, unfair trade practices</p>
+                </div>
+                <div class="document-item">
+                    <strong>2. Indian Evidence Act 1872</strong>
+                    <p>Evidence admissibility, witness testimony, burden of proof</p>
+                </div>
+                <div class="document-item">
+                    <strong>3. Right to Information Act 2005</strong>
+                    <p>Information requests, exemptions, RTI procedures</p>
+                </div>
+                <div class="document-item">
+                    <strong>4. IT Intermediary Guidelines 2021</strong>
+                    <p>Digital platforms, content moderation, online responsibilities</p>
+                </div>
+                <div class="document-item">
+                    <strong>5. Supreme Court Landmark Judgments</strong>
+                    <p>Important legal precedents and court decisions</p>
+                </div>
+                <div class="document-item">
+                    <strong>6. Misleading Advertisement Guidelines</strong>
+                    <p>Advertising standards and consumer protection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
